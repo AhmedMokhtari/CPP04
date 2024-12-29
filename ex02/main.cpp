@@ -27,20 +27,12 @@ int main()
     // delete w;
 
 
+    Animal *a = new Cat;
+    
 
-    // Cat *a = new Cat;
-
-
-    // a->add_idea("sfdf\n");
-    // a->add_idea("sfd fgdff\n");
-    // a->add_idea("sfdf sdgdfg\n");
+    a->makeSound();
 
 
-    // Cat b;
-    // b  = *a;
-    // delete a;
-    // std::cout << b.get_idea(1) << std::endl;
-    // //     // b.add_idea("sdf\n");
-
+    delete a;
     return 0;
 }

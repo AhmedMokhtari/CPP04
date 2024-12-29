@@ -7,8 +7,11 @@ Dog::Dog(){
     brain = new Brain();
 }
 
-Dog::Dog(const Dog &cp) : Animal(cp){
-   operator=(cp);
+Dog::Dog(const Dog &cp):Animal(cp){
+    this->type = cp.type;
+    brain = new Brain(*(cp.brain));
+    // *brain = *(cp.brain);
+    // operator=(cp);
 }
 
 Dog &Dog::operator=(const Dog &cp){
@@ -17,10 +20,7 @@ Dog &Dog::operator=(const Dog &cp){
         this->type = cp.type;
         delete brain;
         brain = new Brain();
-        for (int i = 0; i < 100 ; i++)
-        {
-            brain->idea[i] = cp.brain->idea[i];
-        }
+        *brain = *(cp.brain);
     }
     return *this;
 }
@@ -37,3 +37,13 @@ std::string Dog::getType(void) const{
 void Dog::makeSound()const {
     std::cout << "Dog sound \n";
 }
+
+
+void Dog::add_idea(const std::string &idea){
+    brain->add_idea(idea);
+}
+
+std::string  Dog::get_idea(int index) const{
+    return (brain->get_idea(index));
+}
+

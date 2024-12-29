@@ -8,7 +8,11 @@ Cat::Cat(){
 }
 
 Cat::Cat(const Cat &cp):Animal(cp){
-    operator=(cp);
+    this->type = cp.type;
+    brain = new Brain(*(cp.brain));
+    // brain = new Brain();
+    // *brain = *(cp.brain);
+    // operator=(cp);
 }
 
 Cat &Cat::operator=(const Cat &cp){
@@ -17,10 +21,7 @@ Cat &Cat::operator=(const Cat &cp){
         this->type = cp.type;
         delete brain;
         brain = new Brain();
-        for (int i = 0; i < 100 ; i++)
-        {
-            brain->idea[i] = cp.brain->idea[i];
-        }
+        *brain = *(cp.brain);
     }
     return *this;
 }
@@ -37,3 +38,13 @@ std::string Cat::getType(void) const{
 void Cat::makeSound()const {
     std::cout << "Cat sound \n";
 }
+
+
+void Cat::add_idea(const std::string &idea){
+    brain->add_idea(idea);
+}
+
+std::string  Cat::get_idea(int index) const{
+    return (brain->get_idea(index));
+}
+

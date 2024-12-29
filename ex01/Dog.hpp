@@ -13,4 +13,6 @@ class Dog : public Animal{
         virtual ~Dog();
         std::string getType(void) const;
         void makeSound(void) const;
+        void add_idea(const std::string &idea);
+        std::string get_idea(int index) const;
 };

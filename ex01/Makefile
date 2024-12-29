@@ -1,7 +1,7 @@
 NAME = poly
 
 CPPFLAG = -Wall -Wextra -Werror -std=c++98
-
+ 
 
 OBJ = main.o Animal.o Cat.o Dog.o WrongCat.o WrongAnimal.o  Brain.o 
 

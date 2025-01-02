@@ -8,7 +8,7 @@ class Cure : public AMateria{
         ~Cure();
         Cure& operator=(const Cure &cp);
         // Cure(std::string const & type);
-        std::string const & getType() const;//Returns the materia type
+        // std::string const & getType() const;//Returns the materia type
         AMateria* clone() const;
         void use(ICharacter& target);
 };

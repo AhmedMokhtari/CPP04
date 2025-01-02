@@ -7,6 +7,7 @@ Character::Character(){
     int i = 0;
     while (i < nb)
         inventory[i++] = NULL;
+    head = NULL;
     std::cout << "Caractere Default Constructo has been Called\n";
 }
 
@@ -15,12 +16,26 @@ Character::Character(const std::string &name){
     int i = 0;
     while (i < nb)
         inventory[i++] = NULL;
+    head = NULL;
     std::cout << "Caractere String Constructor has been Called\n";
     
 }
 
 Character::~Character(){
     std::cout << "Caractere Desstructor has been Called\n";
+
+    collect *tmp = NULL;
+    while (head)
+    {
+        tmp = head->next;
+
+        // printf("add %p \n", head);
+        delete head->p;
+        delete head;
+        head = tmp;
+    }
+    for(int i = 0; i < nb; i++)
+        delete inventory[i];
 }
 
 Character::Character(const Character &cp){
@@ -67,18 +82,52 @@ void Character::equip(AMateria* m){
 
     while (i < nb)
     {
-        if (!inventory[i])
+        if (m && !inventory[i] && !is_there_i(m))
         {
-            inventory[i++] = m;
+            inventory[i] = m;
             break;
         }
+        i++;
     }
+}
+
+bool Character::is_there(collect *head, AMateria *p)
+{
+    while (head)
+    {
+        if (head->p == p)
+            return true;
+        head = head->next;
+    }
+    for (int i = 0; i < nb;i++)
+    {
+        if (inventory[i] == p)
+            return true;
+    }
+    return false;
+}
+bool Character::is_there_i(AMateria *p)
+{
+    for (int i = 0; i < nb;i++)
+    {
+        if (inventory[i] == p)
+            return true;
+    }
+    return false;
 }
 
 void Character::unequip(int idx){
     if (idx >= 0 && idx < nb && inventory[idx]){
-        // store the address
+        AMateria *p = inventory[idx];
         inventory[idx] = NULL;
+        if (!is_there(head, p))
+        {
+            collect *tmp = new collect;
+            tmp->p = p;
+            tmp->next = head;
+            head = tmp;
+        }
+        // inventory[idx] = NULL;
     }
 }
 

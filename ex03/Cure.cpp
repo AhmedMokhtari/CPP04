@@ -7,9 +7,11 @@ Cure::Cure()
     type = "cure";
 }
 
-Cure::Cure(const Cure &cp)
+Cure::Cure(const Cure &cp) : AMateria(cp)
 {
     std::cout << "Cure  COpy Constructor Has been called \n";
+    // (void )cp;
+    // return *this;
 }
 
 Cure::~Cure()
@@ -19,7 +21,9 @@ Cure::~Cure()
 
 Cure& Cure::operator=(const Cure &cp)
 {
+    (void)cp;
     std::cout << "Cure assign opeerator overload Has been called \n";
+    return *this;
 }
 
 // Cure::Cure(std::string const & type)
@@ -28,10 +32,10 @@ Cure& Cure::operator=(const Cure &cp)
 //     this->type = type;
 // }
 
-std::string const & Cure::getType() const
-{
-    return this->type;
-}
+// std::string const & Cure::getType() const
+// {
+//     return this->type;
+// }
 
 
 AMateria* Cure::clone() const

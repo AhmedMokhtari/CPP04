@@ -1,12 +1,13 @@
 NAME = poly
 
-CPPFLAG = -Wall -Wextra -Werror -std=c++98
+CPPFLAG = -Wall -Wextra -Werror -std=c++98 -g #-fsanitize=address
  
 
-OBJ = main.o AMateria.o Character.o Cure.o Ice.o ICharacter.o
+OBJ = main.o AMateria.o Character.o Cure.o Ice.o  MateriaSource.o
+# OBJS = main.o AMateria.o Character.o Cure.o Ice.o  MateriaSource.o
 
 
-INCLUDE = AMateria.hpp Charactere.hpp Cure.hpp Ice.hpp ICharacter.hpp
+INCLUDE = AMateria.hpp Character.hpp Cure.hpp Ice.hpp ICharacter.hpp
 
 
 all : $(NAME)

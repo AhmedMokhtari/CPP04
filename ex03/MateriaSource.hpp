@@ -1,7 +1,8 @@
 #pragma once
 #include "AMateria.hpp"
+#include "IMateriaSource.hpp"
 
-class MateriaSource
+class MateriaSource : public IMateriaSource
 {
     private :
         static const int nb = 4;

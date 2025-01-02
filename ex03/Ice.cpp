@@ -7,7 +7,7 @@ Ice::Ice()
     type = "ice";
 }
 
-Ice::Ice(const Ice &cp)
+Ice::Ice(const Ice &cp) : AMateria(cp)
 {
     std::cout << "Ice  Copy Constructor Has been called \n";
 }
@@ -19,7 +19,9 @@ Ice::~Ice()
 
 Ice& Ice::operator=(const Ice &cp)
 {
+    (void)cp;
     std::cout << "Ice assign opeerator overload Has been called \n";
+    return *this;
 }
 
 // Ice::Ice(std::string const & type)
